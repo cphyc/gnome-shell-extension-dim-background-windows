@@ -261,8 +261,8 @@ export default class DimBackgroundWindowsExtension extends Extension {
             if( meta_window.has_focus() ||
                 this.settings.get_boolean( 'dimming-enabled' ) === false ||
                 Main.overview.visible ||
-                ( this.settings.get_string( 'target-monitor' ) === 'primary' && meta_window.is_on_primary_monitor() === 0 ) ||
-                ( this.settings.get_string( 'target-monitor' ) === 'secondary' && meta_window.is_on_primary_monitor() !== 0 ) ||
+                ( this.settings.get_string( 'target-monitor' ) === 'primary' && ! meta_window.is_on_primary_monitor() ) ||
+                ( this.settings.get_string( 'target-monitor' ) === 'secondary' && meta_window.is_on_primary_monitor() ) ||
                 ( this.settings.get_boolean( 'dim-always-on-top' ) === false && meta_window.is_above() ) ||
                 ( this.settings.get_boolean( 'dim-maximized' ) === false && meta_window.get_maximized() === Meta.MaximizeFlags.BOTH ) ||
                 ( this.settings.get_boolean( 'dim-tiled' ) === false && meta_window.get_maximized() === Meta.MaximizeFlags.HORIZONTAL ) ||
